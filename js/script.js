@@ -54,11 +54,31 @@ const quote6 ={
 
 const quotes =[quote1,quote2,quote3,quote4,quote5,quote6];
 
+// for (let i=0 ;i<quotes.length;i++){
+
+//   console.log("the quote",quotes[i].quote);
+//   console.log("the source",quotes[i].source);
+//   console.log("the citation",quotes[i].citation);
+//   console.log("the citation",quotes[i].source);
+
+// }
+
 /***
  * `getRandomQuote` function
 ***/
+function getRandomQuote(){
+
+  var random = Math.ceil(Math.random()*quotes.length)-1;
+  console.log("randome number",random);
 
 
+
+
+  
+
+}
+
+getRandomQuote();
 
 /***
  * `printQuote` function
@@ -71,4 +91,4 @@ const quotes =[quote1,quote2,quote3,quote4,quote5,quote6];
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, false);

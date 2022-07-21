@@ -27,10 +27,8 @@ const quote2 ={
 }
 
 const quote3 ={
-  quote:"During my lifetime I have dedicated myself to this struggle of the African people. I have fought against white domination, and I have fought against black domination. I have cherished the ideal of a democratic and free society in which all persons live together in harmony and with equal opportunities. It is an ideal which I hope to live for and to achieve. But if needs be, it is an ideal for which I am prepared to die.",
-  source:"Nelson Mandela",
-  citation:"Rivonia trial",
-  year:1964
+  quote:"If something's important enough, you should try. Even if - the probable outcome is failure.",
+  source:"Elon Musk",
 }
 
 const quote4 ={
@@ -54,36 +52,38 @@ const quote6 ={
 
 const quotes =[quote1,quote2,quote3,quote4,quote5,quote6];
 
-// for (let i=0 ;i<quotes.length;i++){
-
-//   console.log("the quote",quotes[i].quote);
-//   console.log("the source",quotes[i].source);
-//   console.log("the citation",quotes[i].citation);
-//   console.log("the citation",quotes[i].source);
-
-// }
 
 /***
  * `getRandomQuote` function
 ***/
-function getRandomQuote(){
+function getRandomQuote(arr){
 
   var random = Math.ceil(Math.random()*quotes.length)-1;
   console.log("randome number",random);
-
-
-
-
+  
+  return(arr[random]);
   
 
 }
 
-getRandomQuote();
-
 /***
  * `printQuote` function
 ***/
-
+function printQuote(){
+//call the getRandomQuote fucntion 
+  var quotetoDisplay = getRandomQuote(quotes);
+  var HTMLstring = `<p class="quote"> ${quotetoDisplay.quote}<p>${quotetoDisplay.source}`;
+  //If the random quote object has a citation property, 
+  //concatenate a <span> element with the class "citation" to the HTML string.
+  if(quotetoDisplay.citation != undefined){
+    HTMLstring +=`<span class="citation">${quotetoDisplay.citation}</span>`
+  } 
+  if(quotetoDisplay.year != undefined){
+    HTMLstring +=`<span class="year">${quotetoDisplay.year}</span></p>`
+  }
+  
+  document.getElementById('quote-box').innerHTML = HTMLstring; 
+}
 
 
 /***
@@ -91,4 +91,9 @@ getRandomQuote();
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+//element.addEventListener(event, function, useCapture)
+//useCapture	Optional (default = false).
+// false - The handler is executed in the bubbling phase.
+// true - The handler is executed in the capturing phase.

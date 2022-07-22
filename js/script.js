@@ -27,13 +27,16 @@ const quotes =[
     { 
     quote:"If I had my time over I would do the same again. So would any man who dares call himself a man.",
     source:"Nelson Mandela",
-    year:1962
+    category:"politics",
+    year:1962,
+    
 
     },
 
   {  
   quote:"If something's important enough, you should try. Even if - the probable outcome is failure.",
   source:"Elon Musk",
+  category:"information technology",
 
   },
 
@@ -83,13 +86,34 @@ function printQuote(){
   //concatenate a <span> element with the class "citation" to the HTML string.
   if(quotetoDisplay.citation){
     HTMLstring +=`<span class="citation">${quotetoDisplay.citation}</span>`
+  
   } 
+ if (quotetoDisplay.category){
+  HTMLstring +=`<span class="year">${quotetoDisplay.category}</span>`;
+ }
   if(quotetoDisplay.year){
     HTMLstring +=`<span class="year">${quotetoDisplay.year}</span></p>`
   }
   
   document.getElementById('quote-box').innerHTML = HTMLstring; 
+  RandomBG();
+  // setInterval(printQuote,2000);
 }
+
+
+/***
+ * `RandomBG` function will randomly change the backcground color of the page 
+***/
+
+function RandomBG(){
+  const colors =["red","aqua","beige","rgb(238, 255, 0)","lightblue","pink"];
+  const randomColor = getRandomQuote(colors);
+  const body = document.querySelector("body");
+  body.style.background = randomColor;
+   console.log(body.style.background);
+
+}
+
 
 
 /***
